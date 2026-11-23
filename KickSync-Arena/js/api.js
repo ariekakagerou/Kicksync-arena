@@ -5,7 +5,9 @@
    ============================================================ */
 
 const API = (() => {
-  let _baseUrl = 'http://localhost:3000/api';
+  // Support custom backend URL via window.KICKSYNC_API_URL or localStorage
+  const _savedUrl = (typeof window !== 'undefined') ? (window.KICKSYNC_API_URL || localStorage.getItem('KICKSYNC_API_URL')) : null;
+  let _baseUrl = _savedUrl || 'http://localhost:3000/api';
   let _isOnline = false;
   let _healthData = null;
   const _listeners = [];
@@ -194,7 +196,13 @@ const API = (() => {
     get isOnline() { return _isOnline; },
     get healthData() { return _healthData; },
     get baseUrl() { return _baseUrl; },
-    setBaseUrl(url) { _baseUrl = url; checkHealth(); },
+    setBaseUrl(url, persist = true) {
+      _baseUrl = url;
+      if (persist && typeof localStorage !== 'undefined') {
+        try { localStorage.setItem('KICKSYNC_API_URL', url); } catch (_e) {}
+      }
+      checkHealth();
+    },
     checkHealth,
     onStatusChange,
     getStudents,

@@ -63,6 +63,21 @@ python -m http.server 8080
 ```
 Open `http://localhost:8080` in your web browser.
 
+### 3. Deploy Frontend to Vercel
+
+1. Import this repository in [Vercel](https://vercel.com/).
+2. In the **Root Directory** field, click **Edit** and set it to:
+   ```text
+   KickSync-Arena
+   ```
+3. Leave **Build Command** and **Output Directory** empty (static project).
+4. Click **Deploy**.
+5. Once your backend is hosted online (e.g., on Railway/Render), set the backend URL in the browser console:
+   ```javascript
+   API.setBaseUrl('https://your-backend-domain.com/api');
+   ```
+   Or set `window.KICKSYNC_API_URL` prior to loading `api.js`.
+
 ---
 
 ## 🛠️ Tech Stack
