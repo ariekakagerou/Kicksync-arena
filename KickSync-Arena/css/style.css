@@ -1,0 +1,683 @@
+/* ============================================================
+   YouthTrigger Arena — Main Stylesheet (Modern Athletic Tech v3.5)
+   File: css/style.css
+   ============================================================ */
+
+/* ---- Custom Font & Smooth Scroll ---- */
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: #090d16;
+  color: #f4f4f5;
+  overflow-x: hidden;
+}
+
+/* ---- Scrollbars ---- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(9, 13, 22, 0.6); }
+::-webkit-scrollbar-thumb { background: #27272a; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+/* ---- Pitch Lines Pattern ---- */
+.pitch-lines {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, #000 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 40%, transparent 80%);
+}
+
+.pitch-grid {
+  background-image:
+    linear-gradient(rgba(163, 230, 53, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(163, 230, 53, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ---- Glassmorphism Variants ---- */
+.glass {
+  background: rgba(15, 23, 42, 0.62);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.glass-subtle {
+  background: rgba(18, 26, 46, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-stronger {
+  background: rgba(9, 14, 28, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-card {
+  background: rgba(12, 19, 36, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(52, 211, 153, 0.22);
+  box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* ---- High-Contrast Text Gradients ---- */
+.text-gradient {
+  background: linear-gradient(90deg, #4ade80, #a3e635, #d9f99d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(90deg, #facc15, #f59e0b, #fbbf24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- Neon & Gradients ---- */
+.gradient-emerald {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #a3e635 100%);
+}
+
+.gradient-lime {
+  background: linear-gradient(135deg, #22c55e 0%, #84cc16 50%, #a3e635 100%);
+}
+
+.gradient-cyber {
+  background: linear-gradient(135deg, #064e3b 0%, #0f172a 60%, #1e1b4b 100%);
+}
+
+/* ---- Glowing Buttons ---- */
+.btn-lime-glow {
+  background: linear-gradient(135deg, #a3e635 0%, #84cc16 60%, #4ade80 100%);
+  color: #051307;
+  font-weight: 800;
+  box-shadow: 0 0 25px rgba(163, 230, 53, 0.4), 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.btn-lime-glow:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 35px rgba(163, 230, 53, 0.65), 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+.btn-lime-glow:active {
+  transform: translateY(0) scale(0.98);
+}
+.btn-lime-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: ks-sheen 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.btn-emerald-glow {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  font-weight: 800;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+  transition: all 0.25s ease;
+}
+.btn-emerald-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 32px rgba(16, 185, 129, 0.55);
+}
+
+.send-btn {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  color: #062817;
+  font-weight: 800;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.send-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.5);
+}
+.send-btn:active {
+  transform: scale(0.98);
+}
+
+/* ---- FUT / EA Sports FC Authentic Trading Card ---- */
+.fut-card-wrapper {
+  position: relative;
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 35px rgba(163, 230, 53, 0.3));
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
+  user-select: none;
+}
+.fut-card-wrapper:hover {
+  transform: translateY(-8px) scale(1.02);
+  filter: drop-shadow(0 28px 50px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 50px rgba(163, 230, 53, 0.6));
+}
+
+.fut-card-shield {
+  clip-path: polygon(8% 0%, 92% 0%, 100% 5%, 100% 88%, 50% 100%, 0% 88%, 0% 5%);
+  background: linear-gradient(145deg, #bef264 0%, #10b981 30%, #064e3b 60%, #15803d 85%, #84cc16 100%);
+  padding: 3px;
+  position: relative;
+}
+
+.fut-card-inner {
+  clip-path: polygon(8% 0%, 92% 0%, 100% 5%, 100% 88%, 50% 100%, 0% 88%, 0% 5%);
+  background: radial-gradient(circle at 50% 12%, #0e2918 0%, #09131d 55%, #030712 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.fut-card-texture {
+  background-image: radial-gradient(rgba(163, 230, 53, 0.12) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.fut-card-inner::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(65deg, transparent 42%, rgba(255, 255, 255, 0.12) 50%, transparent 58%);
+  transform: rotate(25deg);
+  pointer-events: none;
+  animation: fut-sheen 5s infinite;
+  z-index: 10;
+}
+
+/* Backward compatibility for .fut-card class */
+.fut-card {
+  position: relative;
+  background: radial-gradient(circle at 50% 10%, rgba(34, 197, 94, 0.18) 0%, rgba(15, 23, 42, 0.95) 70%);
+  border: 2px solid rgba(163, 230, 53, 0.45);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.8), 0 0 35px rgba(163, 230, 53, 0.22);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  overflow: hidden;
+}
+.fut-card:hover {
+  transform: translateY(-6px) rotate(0.5deg);
+  border-color: rgba(163, 230, 53, 0.8);
+  box-shadow: 0 24px 50px -16px rgba(0, 0, 0, 0.9), 0 0 45px rgba(163, 230, 53, 0.45);
+}
+
+@keyframes fut-sheen {
+  0% { transform: translateY(-100%) rotate(25deg); }
+  50%, 100% { transform: translateY(100%) rotate(25deg); }
+}
+
+/* ---- Tech Bracket Card Corners ---- */
+.tech-bracket-card {
+  position: relative;
+}
+.tech-bracket-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 24px;
+  height: 24px;
+  border-top: 3px solid #a3e635;
+  border-right: 3px solid #a3e635;
+  border-top-right-radius: 14px;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(163, 230, 53, 0.8));
+}
+.tech-bracket-card::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: -2px;
+  width: 24px;
+  height: 24px;
+  border-bottom: 3px solid #a3e635;
+  border-left: 3px solid #a3e635;
+  border-bottom-left-radius: 14px;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(163, 230, 53, 0.8));
+}
+
+/* ---- Diagonal Speed Corner Accents ---- */
+.corner-accent-tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(135deg, rgba(163, 230, 53, 0.25) 0%, rgba(16, 185, 129, 0.12) 35%, transparent 70%);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.corner-accent-bl {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, rgba(163, 230, 53, 0.2) 0%, rgba(16, 185, 129, 0.08) 40%, transparent 75%);
+  clip-path: polygon(0 100%, 0 0, 100% 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.corner-accent-br {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 260px;
+  height: 260px;
+  background: linear-gradient(225deg, rgba(163, 230, 53, 0.25) 0%, rgba(16, 185, 129, 0.12) 35%, transparent 70%);
+  clip-path: polygon(100% 100%, 100% 0, 0 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---- Card Hover Lift ---- */
+.card-hover {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  border-color: rgba(74, 222, 128, 0.5);
+  box-shadow: 0 20px 40px -20px rgba(34, 197, 94, 0.35);
+}
+
+.ks-card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.ks-card-lift:hover, .ks-card-lift:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px -18px rgba(163, 230, 53, 0.45);
+  outline: none;
+}
+
+/* ---- Reveal on Scroll ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Keyframe Animations ---- */
+@keyframes ks-sheen {
+  0% { transform: translateX(-120%) skewX(-20deg); }
+  60%, 100% { transform: translateX(260%) skewX(-20deg); }
+}
+
+@keyframes ks-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes ks-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseOpacity {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(1.15); }
+}
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0);  opacity: 0.4; }
+  30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+.ks-float { animation: ks-float 5s ease-in-out infinite; }
+.ks-ring  { animation: ks-spin 22s linear infinite; }
+.msg-anim { animation: fadeSlideIn 0.3s ease-out forwards; }
+.pulse-dot { animation: pulseOpacity 2s infinite; }
+.typing-dot { animation: typingBounce 1.4s infinite; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+.toast-anim { animation: fadeSlideIn 0.3s ease-out; }
+
+/* ---- Rings & Fixtures ---- */
+.online-ring {
+  border: 2px solid #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+}
+
+.fixture-card-bg {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(163, 230, 53, 0.06));
+  border: 1px solid rgba(52, 211, 153, 0.25);
+}
+
+.stat-bar-fill {
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cd-digit {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ---- Marquee Animation ---- */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ---- Match Status Badges ---- */
+.match-badge-W { background: rgba(52, 211, 153, 0.2); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.35); }
+.match-badge-D { background: rgba(251, 191, 36, 0.2); color: #fcd34d; border: 1px solid rgba(251, 191, 36, 0.35); }
+.match-badge-L { background: rgba(248, 113, 113, 0.2); color: #fca5a5; border: 1px solid rgba(248, 113, 113, 0.35); }
+
+/* ---- Focus & Accessibility ---- */
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #a3e635;
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   DISCORD-STYLE LOCKER ROOM & MESSAGING
+   ============================================================ */
+.discord-bg {
+  background-color: #313338;
+}
+.discord-sidebar {
+  background-color: #2b2d31;
+}
+.discord-server-rail {
+  background-color: #1e1f22;
+}
+.discord-header {
+  background-color: #313338;
+  border-bottom: 1px solid #1f2023;
+}
+.discord-input-container {
+  background-color: #383a40;
+}
+.discord-msg-row {
+  transition: background-color 0.12s ease;
+}
+.discord-msg-row:hover {
+  background-color: rgba(2, 2, 2, 0.12);
+}
+.discord-msg-row:hover .discord-msg-actions {
+  opacity: 1;
+  pointer-events: auto;
+}
+.discord-msg-actions {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.discord-channel {
+  transition: all 0.15s ease;
+}
+.discord-channel:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #dbdee1;
+}
+.discord-channel.active {
+  background-color: rgba(255, 255, 255, 0.09);
+  color: #ffffff;
+}
+.discord-reaction {
+  background: #2b2d31;
+  border: 1px solid #3b3e45;
+  transition: all 0.15s ease;
+}
+.discord-reaction:hover {
+  background: #35373c;
+  border-color: #4e5058;
+}
+.discord-reaction.reacted {
+  background: rgba(88, 101, 242, 0.18);
+  border-color: #5865F2;
+  color: #c9cdfb;
+}
+.discord-blurple-bg {
+  background-color: #5865F2;
+}
+.discord-blurple-bg:hover {
+  background-color: #4752C4;
+}
+.discord-blurple-text {
+  color: #5865F2;
+}
+.discord-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.discord-scroll::-webkit-scrollbar-track {
+  background: #2b2d31;
+}
+.discord-scroll::-webkit-scrollbar-thumb {
+  background: #1a1b1e;
+  border-radius: 4px;
+}
+.discord-scroll::-webkit-scrollbar-thumb:hover {
+  background: #111214;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN ENHANCEMENTS (Mobile, Tablet, Desktop)
+   ============================================================ */
+
+/* Mobile Discord Drawer & Backdrop */
+.discord-mobile-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 280px;
+  max-width: 85vw;
+  background: #2b2d31;
+  z-index: 50;
+  transform: translateX(-100%);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: none;
+}
+.discord-mobile-drawer.open {
+  transform: translateX(0);
+  box-shadow: 10px 0 35px rgba(0, 0, 0, 0.75);
+}
+.discord-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 49;
+  display: none;
+  animation: fadeIn 0.2s ease;
+}
+.discord-mobile-overlay.show {
+  display: block;
+}
+
+/* Portal Mobile Sidebar Overrides */
+.pp-mobile-open,
+.sidebar-mobile-open,
+.cp-mobile-open {
+  transform: translateX(0) !important;
+  box-shadow: 12px 0 35px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Responsive Table Scroll Containers */
+.table-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+.table-scroll-x::-webkit-scrollbar {
+  height: 6px;
+}
+.table-scroll-x::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 9999px;
+}
+.table-scroll-x::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+}
+.table-scroll-x::-webkit-scrollbar-thumb:hover {
+  background: rgba(163, 230, 53, 0.4);
+}
+
+/* Modal Viewport Fit on Mobile */
+.modal-responsive-card {
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Minimum Tap Target for Mobile Elements */
+@media (max-width: 768px) {
+  button, 
+  .clickable-target {
+    touch-action: manipulation;
+  }
+}
+
+/* Zero Horizontal Overflow on Mobile & Small Screens */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  width: 100%;
+}
+
+#app-header {
+  max-width: 100vw;
+  width: 100%;
+  overflow: visible !important;
+  position: relative;
+  z-index: 50;
+}
+
+#app-view {
+  max-width: 100vw;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Institutional Dropdown Navbar Styles (Matching Modern University Style) */
+.nav-institutional-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e4e4e7;
+  padding: 6px 9px;
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav-institutional-link:hover {
+  color: #a3e635;
+}
+.nav-institutional-link.active {
+  color: #a3e635;
+  font-weight: 700;
+}
+.nav-institutional-link.active::after,
+.nav-portal-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 6px;
+  right: 6px;
+  height: 2.5px;
+  background: #a3e635;
+  box-shadow: 0 0 10px rgba(163, 230, 53, 0.7);
+  border-radius: 9999px;
+}
+.nav-portal-highlight {
+  color: #facc15 !important;
+}
+.nav-portal-highlight::after {
+  background: #facc15 !important;
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.7) !important;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  background: rgba(11, 16, 29, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.75);
+  padding: 6px;
+  z-index: 100;
+  display: none;
+  animation: ks-fade-dropdown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes ks-fade-dropdown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.group:hover .nav-dropdown-menu,
+.group:focus-within .nav-dropdown-menu {
+  display: block;
+}
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #d4d4d8;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #a3e635;
+  transform: translateX(2px);
+}
+
+@media (max-width: 640px) {
+  /* Prevent flex/grid children from bursting out of viewport */
+  .grid, .flex {
+    min-width: 0;
+  }
+  
+  /* Ensure all cards fit snug without margin bleed */
+  .pp-stat-card, .cp-stat-card, .glass-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+
+
